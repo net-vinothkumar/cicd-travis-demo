@@ -22,13 +22,12 @@ before_install:
 script:
   - mvn test
   - mvn clean package
-
-# Create Docker image for our app and push it to Dockerhub repository
-after_success:
-  - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker-compose build
+  # Create Docker image for our app and push it to Dockerhub repository
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t travis-demo .
   - docker images
-  - docker push "interviewdot/travis-demo:latest
+  - docker tag travis-demo interviewdot/travis-demo
+  - docker push interviewdot/travis-demo
 
 # Send the message of success after the docker image is pushed to dockerhub
 notifications:

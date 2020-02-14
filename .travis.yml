@@ -27,6 +27,7 @@ script:
 after_success:
   - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
   - docker-compose build
+  - docker images
   - docker push interviewdot/travis-demo:latest
 
 # Send the message of success after the docker image is pushed to dockerhub

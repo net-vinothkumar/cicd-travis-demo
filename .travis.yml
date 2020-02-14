@@ -33,3 +33,10 @@ script:
 notifications:
   email:
     - interviewdot@gmail.com
+
+
+# How to generate the travis encrypted value :
+# brew install travis
+# travis login --auto
+# travis encrypt DOCKER_USERNAME=interviewdot
+# travis encrypt DOCKER_PASSWORD=____________

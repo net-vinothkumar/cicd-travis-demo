@@ -6,14 +6,12 @@ services:
 
 # env:
 #   global:
-#     secure: IMAGE_NAME
 #     secure: DOCKER_USER
 #     secure: DOCKER_PASS
 
 # replace the following env configurations with your own
 env:
   global:
-    - secure: O+FpUncWHWitFCkikP1DxjIuY22xQVoBQIaisQDdx1Jv29Zo4Xt4jm7x8aycZ8uPnxNi/k9LXj/UZ7riEm2a+w393LWknZIMEZqpbxExDaogG2GOzPJq78LXv+TuyxyBDJ3jacxv67CZjxpZS/sXziytKb+nQvH2KlM1x/Xd122xesp167kguLqCiS9CyWkYRCrnvWxG+1rgjRbqRwHu8hG4HbUM3db2UniMRmBUZ+KgXLCd1T6KFXViFH4o56MASiYGl/ZFFVyJDam41H0QfiTjLwsfMYE6GlZ6Qqx+zNEwBIoJe8qeU0dCFJjmjYqY/eK6OvhsJJLn+HjZbO5codXlqf62oCnhjEp9LlnYwhwJpA7N/b7peB1LxJtMSr9PNPi6Ijn8K6xlb7kNaAmWz03RbD0Eu1EU2vGsG1krI7afX706MhUxSEj7Fb3afcbBQKijt0oGjRuZxL00P/C3AZthtm30W1UkWLlG4TW/m5aeGXyuFcR/Jh5Z9CxpvRuV8Oxx2vyHyUJNIvHiZulIvgNjrEj/lmbOXmqcdHwyKk+QAQBwE+8O45C8GZx+e5oiqkAKPrpH9sDgNPQ/J2Aofe1R2cgrAJ6m/RagVYRzUjceP2oPyPv+40umI/Cfl0GeGMBQZ6+j1XXNhjCnRZucK5N3fK0P2r8d9GiPQbIYEJ0=
     - secure: nS72tiqkiKufVH2bapGtmAyWto8MVGMXvUmxnzpopYyy/VBh+NRjQ7oFt6pmkXejoavcTQrbiCqjoK9p29HnHguMXl4b8IqVDoYSGp0pR/AvPu9a8+UDsr5klWnwI3vednuzMA7EOstetiBVwvkF8Wxq/vhxfQh8H4PIgxlsf4NsbpTA6WLMrB8zHc6lKnASxcNkBtnMNhHiCA+tTOpb9S3GSH6GMbW3+O6G4+ZN0d0VjX6Pz+G3755cGgB43Y7oiuWPqrL7xoto5b7+ieTBlhiAdKW6lK9c0eAB6oYwdEiSK6zNshHzV19kJpYHy0P+REtPf9Uff8lO5zquhml0qzat/PcFL8HRhIfa8aAphuUUh6isytGfnZKLiFCbyNQwiCv6xfM3BzF3wDnwzBKHfTkLDJYF1Z4pOMG7Vw2t24WrtoJL1l+gMdG0UnA/hEh8x/Hb5hPOOlZpY/NYRmH/lEcQtE+nl4NVlb7u8NqOePLgx9rNESm9bwyS/PpbVaKmr1mXbLQVQEb0nXgg6V3CE+VmykykBy/n/IOuI+BdI0fOmGDqQgvq+wfbo2XWRPk97tm5xqwWWBnW6zS/tK0WSgv1r0EA7Am0nvLVcOxfTyu+Oqy04AMQSG8PoReNeZ636Cmou1AHzC/kgFZrZ08aSpt1JbrNy0JtFcXYbqDxldA=
     - secure: HaDl2lveLl7V8qegnalt7hkngMiNVJ+fuPJUvE9yWuVBbUnjX4QekOOKtc0bABJpTx6nb6YQD5zEsvcYmT3JGbZVNNl2yrNRTae65nCh9z6P1VuUW7HAcA76NAlE5OT2l+lm9GIP97Q89Xn1iL9LmSxlm1LT/AD9DIMJDdhBLPdLuMWOgKHeZiG6RlVn/LwmYf2A/MLRF6tulV4r/9c8Dji2/hrpUAjzaKoGkO+sEHpcec5QL8DdHiBbroUECm1qC4guMJmgBwX+yyjXlxFfKrK5noD46WdKzpmSC5WeNNT94kHMyHCyJOs/izlgYsfMaY5k/l08G09l4PmhHYn3vRZHLJDb+6x/t93QUmjqsh7EhYcW92MnS0Qy9OC4xeE3cTBfbOeOBFGY6XWVEpKy4ddrBkq+VoodEJ8b2UXDjJBoiNCYj8MvL1mpPmJ8zbYvbSzYQbpXGAjX58mD2kA4L3rTazYxTi5BfHUO2uWHfgncjHygX39g+7+RDH460xG6DUA1LnNNQ2rLI4JFx7Kxe4an4Qg/NglLVjMrRGNu/Luyx/NgLqa2w5ad/G0QU9TxfFzy8oPq97PmeJY4O3ddP7eUWRpxIq3avjVyAURg/wuS75m5IPLkcZj5qms+WymHY24O571AMwkgiJ3kH/XI+OuXXPApI7keulhJAtx05fk=
 
@@ -29,8 +27,7 @@ script:
 after_success:
   - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
   - docker-compose build
-  - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
-  - docker push $IMAGE_NAME:$TAG
+  - docker push interviewdot/travis-demo:latest
 
 # Send the message of success after the docker image is pushed to dockerhub
 notifications:

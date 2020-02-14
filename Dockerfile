@@ -1,13 +1,4 @@
-FROM openjdk:8-jre-alpine
-LABEL maintainer="interviewdot@gmail.com"
-
-ENV APP_ROOT /app
-
-RUN mkdir ${APP_ROOT}
-
-WORKDIR ${APP_ROOT}
-
-COPY target/*.jar ${APP_ROOT}/run.jar
-COPY config ${APP_ROOT}/config/
-
-ENTRYPOINT ["java", "-jar", "run.jar"]
+FROM openjdk:8
+EXPOSE 8080
+ADD target/travis-demo-0.0.1-SNAPSHOT.jar travis-demo-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","/travis-demo-0.0.1-SNAPSHOT.jar"]

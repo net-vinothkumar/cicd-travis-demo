@@ -25,10 +25,10 @@ script:
 
 # Create Docker image for our app and push it to Dockerhub repository
 after_success:
-  - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+  - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker-compose build
   - docker images
-  - docker push interviewdot/travis-demo:latest
+  - docker push "interviewdot/travis-demo:latest
 
 # Send the message of success after the docker image is pushed to dockerhub
 notifications:

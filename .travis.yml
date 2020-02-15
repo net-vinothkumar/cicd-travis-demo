@@ -9,6 +9,12 @@ services:
 #     secure: DOCKER_USERNAME
 #     secure: DOCKER_PASSWORD
 
+# How to generate the travis encrypted value :
+# brew install travis
+# travis login --auto
+# travis encrypt DOCKER_USERNAME=interviewdot
+# travis encrypt DOCKER_PASSWORD=____________
+
 # replace the following env configurations with your own
 env:
   global:
@@ -35,8 +41,3 @@ notifications:
     - interviewdot@gmail.com
 
 
-# How to generate the travis encrypted value :
-# brew install travis
-# travis login --auto
-# travis encrypt DOCKER_USERNAME=interviewdot
-# travis encrypt DOCKER_PASSWORD=____________
